@@ -15,3 +15,9 @@ CREATE TABLE paciente(
     FOREIGN KEY (id_medico) REFERENCES medico(crm)
 );
 
+CREATE TABLE relatorio(
+    id_relatorio INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome_relatorio VARCHAR(30) NOT NULL,
+    id_medico INT,
+    FOREIGN KEY (id_medico) REFERENCES medico(crm)
+);
