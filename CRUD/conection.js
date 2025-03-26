@@ -12,17 +12,6 @@ const db = mysql.createConnection({
   port: 3306 
 });
 
-app.get('/', (req, res) => {
-    db.query('SELECT * FROM sua_tabela', (err, results) => {
-      if (err) {
-        console.error('Erro ao executar a consulta:', err);
-        res.status(500).send('Erro no servidor');
-      } else {
-        res.json(results); 
-      }
-    });
-});
-
 db.connect(err => {
   if (err) {
     console.error('Erro ao conectar ao banco de dados:', err);
