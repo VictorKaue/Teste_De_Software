@@ -19,5 +19,7 @@ CREATE TABLE relatorio(
     id_relatorio INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome_relatorio VARCHAR(30) NOT NULL,
     id_medico INT,
-    FOREIGN KEY (id_medico) REFERENCES medico(crm)
+    id_paciente INT,
+    FOREIGN KEY (id_medico) REFERENCES medico(crm),
+    FOREIGN KEY (id_paciente) REFERENCES paciente(cpf)
 );
