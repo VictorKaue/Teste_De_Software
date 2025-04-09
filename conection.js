@@ -26,7 +26,7 @@ db.connect(err => {
 
 // Rota para listar usuários
 app.get('/users', (req, res) => {
-  const query = 'SELECT * FROM users';
+  const query = 'SELECT * FROM pacientes';
   db.query(query, (err, results) => {
     if (err) {
       res.status(500).json({ error: 'Erro ao consultar usuários' });
