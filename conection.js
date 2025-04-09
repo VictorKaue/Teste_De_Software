@@ -9,9 +9,9 @@ app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '127.0.0.1',
+  host: 'localhost',
   user: 'root',
-  password: 'c@tolic@',
+  password: 'catolica',
   database: 'sismed',
   port: 3307,
 });
