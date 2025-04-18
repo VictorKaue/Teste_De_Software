@@ -4,16 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"    
+    "test": "jest",
+    "start": "concurrently \"npm --prefix backend start\" \"npm --prefix frontend start\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "mysql2": "^3.14.0"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "jest": "^29.7.0"
   },
-  "keywords": []
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorKaue/Teste_De_Software.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VictorKaue/Teste_De_Software/issues"
+  },
+  "homepage": "https://github.com/VictorKaue/Teste_De_Software#readme"
 }
