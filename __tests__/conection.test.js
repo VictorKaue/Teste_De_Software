@@ -3,9 +3,9 @@ const mysql = require('mysql2');
 describe('Teste de Conexão ao Banco de Dados', () => {
   it('Deve conectar ao banco sem erros', (done) => {
     const db = mysql.createConnection({
-      host: '127.0.0.1',
+      host: 'localhost',
       user: 'root',
-      password: 'c@tolic@',
+      password: 'vklp100106',
       database: 'sismed',
       port: 3306,
     });
