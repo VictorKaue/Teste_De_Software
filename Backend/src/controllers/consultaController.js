@@ -1,6 +1,6 @@
 const db = require('../config/db'); // Importa o db configurado
 const jwt = require('jsonwebtoken');
-const consultaRoutes = require('./routes/consultaRoutes');
+const consultaRoutes = require('../routes/consultaRoutes');
 
 // Middleware de autenticação
 const authMiddleware = (req, res, next) => {
@@ -72,10 +72,29 @@ const getConsultasByUsuario = (req, res) => {
   });
 };
 
-// Middleware de tratamento de erros
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Ocorreu um erro no servidor.' });
-});
+const createConsulta = (req, res) => {
+  const { data_horario, motivo, paciente_id, medico_id, relatorio_id } = req.body;
 
-module.exports = { getConsultas, getConsultasByMedico, getConsultasByUsuario };
+  // Verifica se todos os campos obrigatórios foram fornecidos
+  if (!data_horario || !motivo || !paciente_id || !medico_id || !relatorio_id) {
+    return res.status(400).json({ error: 'Todos os campos obrigatórios devem ser preenchidos.' });
+  }
+
+  const query = `
+    INSERT INTO consulta (data_horario, motivo, paciente_id, medico_id, relatorio_id)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(query, [data_horario, motivo, paciente_id, medico_id, relatorio_id], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao cadastrar consulta.' });
+    } else {
+      res.status(201).json({
+        message: 'Consulta cadastrada com sucesso!',
+        consultaId: results.insertId,
+      });
+    }
+  });
+};
+
+module.exports = { getConsultas, getConsultasByMedico, getConsultasByUsuario, createConsulta, authMiddleware };

@@ -10,6 +10,18 @@ CREATE TABLE usuario (
   tipo_usuario VARCHAR(50) NOT NULL
 );
 
+-- Tabela de pacientes
+CREATE TABLE paciente (
+  id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  cpf VARCHAR(45) NOT NULL UNIQUE,
+  endereco VARCHAR(100),
+  telefone VARCHAR(12),
+  usuario_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id_usuario)
+);
+
 -- Tabela de médicos
 CREATE TABLE medico (
   id_medico INT AUTO_INCREMENT PRIMARY KEY,
@@ -32,22 +44,12 @@ CREATE TABLE consulta (
   id_consulta INT AUTO_INCREMENT PRIMARY KEY,
   data_horario DATETIME NOT NULL,
   motivo VARCHAR(50) NOT NULL,
+  paciente_id INT NOT NULL,
+  medico_id INT NOT NULL,
   relatorio_id INT NOT NULL,
+  FOREIGN KEY (paciente_id) REFERENCES paciente(id_paciente),
+  FOREIGN KEY (medico_id) REFERENCES medico(id_medico),
   FOREIGN KEY (relatorio_id) REFERENCES relatorio(id_relatorio)
-);
-
--- Tabela de pacientes
-CREATE TABLE paciente (
-  id_paciente INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100) NOT NULL,
-  data_nascimento DATE NOT NULL,
-  cpf VARCHAR(45) NOT NULL UNIQUE,
-  endereco VARCHAR(100),
-  telefone VARCHAR(12),
-  consulta_id INT NOT NULL,
-  usuario_id INT NOT NULL,
-  FOREIGN KEY (consulta_id) REFERENCES consulta(id_consulta),
-  FOREIGN KEY (usuario_id) REFERENCES usuario(id_usuario)
 );
 
 -- Tabela de relação entre médicos e pacientes

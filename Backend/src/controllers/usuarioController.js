@@ -76,4 +76,18 @@ const createPaciente = (req, res) => {
   });
 };
 
-module.exports = { getPacientes, getPacienteById, createPaciente };
+// Cria um usuário (CREATE)
+const createUsuario = (req, res) => {
+  const { email, senha, tipo_usuario } = req.body;
+
+  const query = 'INSERT INTO usuario (email, senha, tipo_usuario) VALUES (?, ?, ?)';
+  db.query(query, [email, senha, tipo_usuario], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao criar usuário.' });
+    } else {
+      res.status(201).json({ message: 'Usuário criado com sucesso!', usuarioId: results.insertId });
+    }
+  });
+};
+
+module.exports = {createUsuario, getPacientes, getPacienteById, createPaciente};
