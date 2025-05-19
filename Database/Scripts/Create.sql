@@ -2,14 +2,6 @@
 CREATE DATABASE IF NOT EXISTS sismed;
 USE sismed;
 
--- Tabela de usuários
-CREATE TABLE usuario (
-  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
-  senha VARCHAR(255) NOT NULL,
-  tipo_usuario VARCHAR(50) NOT NULL
-);
-
 -- Tabela de pacientes
 CREATE TABLE paciente (
   id_paciente INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,8 +10,7 @@ CREATE TABLE paciente (
   cpf VARCHAR(45) NOT NULL UNIQUE,
   endereco VARCHAR(100),
   telefone VARCHAR(12),
-  usuario_id INT NOT NULL,
-  FOREIGN KEY (usuario_id) REFERENCES usuario(id_usuario)
+  senha VARCHAR(255) NOT NULL
 );
 
 -- Tabela de médicos
@@ -29,14 +20,7 @@ CREATE TABLE medico (
   especialidade VARCHAR(50) NOT NULL,
   data_nascimento DATE NOT NULL,
   crm VARCHAR(10) NOT NULL UNIQUE,
-  usuario_id_usuario INT NOT NULL,
-  FOREIGN KEY (usuario_id_usuario) REFERENCES usuario(id_usuario)
-);
-
--- Tabela de relatórios
-CREATE TABLE relatorio (
-  id_relatorio INT AUTO_INCREMENT PRIMARY KEY,
-  descricao TEXT NOT NULL
+  senha VARCHAR(255) NOT NULL
 );
 
 -- Tabela de consultas
@@ -44,12 +28,11 @@ CREATE TABLE consulta (
   id_consulta INT AUTO_INCREMENT PRIMARY KEY,
   data_horario DATETIME NOT NULL,
   motivo VARCHAR(50) NOT NULL,
+  descricao TEXT NOT NULL,
   paciente_id INT NOT NULL,
   medico_id INT NOT NULL,
-  relatorio_id INT NOT NULL,
   FOREIGN KEY (paciente_id) REFERENCES paciente(id_paciente),
-  FOREIGN KEY (medico_id) REFERENCES medico(id_medico),
-  FOREIGN KEY (relatorio_id) REFERENCES relatorio(id_relatorio)
+  FOREIGN KEY (medico_id) REFERENCES medico(id_medico)
 );
 
 -- Tabela de relação entre médicos e pacientes
