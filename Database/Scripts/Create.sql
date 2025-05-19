@@ -23,7 +23,7 @@ CREATE TABLE medico (
   senha VARCHAR(255) NOT NULL
 );
 
--- Tabela de consultas
+-- Tabela de consultas (com relatório embutido)
 CREATE TABLE consulta (
   id_consulta INT AUTO_INCREMENT PRIMARY KEY,
   data_horario DATETIME NOT NULL,

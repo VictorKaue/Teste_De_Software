@@ -1,22 +1,11 @@
 -- Usando o banco de dados
 USE sismed;
 
--- Inserindo usuários
-INSERT INTO usuario (email, senha, tipo_usuario) VALUES
-('admin@exemplo.com', '123456', 'admin'),
-('medico@exemplo.com', '123456', 'medico'),
-('paciente@exemplo.com', '123456', 'paciente');
-
--- Inserindo médicos
-INSERT INTO medico (nome, especialidade, data_nascimento, crm, usuario_id_usuario) VALUES
-('Dr. João Silva', 'Cardiologia', '1975-05-12', 'CRM12345', 2),
-('Dra. Maria Oliveira', 'Pediatria', '1982-11-23', 'CRM67890', 2);
-
 -- Inserindo pacientes
 INSERT INTO paciente (cpf, nome, telefone, data_nascimento, endereco, usuario_id) VALUES
-('123.456.789-00', 'Ana Santos', '61912345678', '1990-04-10', 'Rua A, 123', 3),
-('987.654.321-00', 'Carlos Pereira', '61976543210', '1985-07-15', 'Rua B, 456', 3),
-('456.789.123-00', 'Mariana Costa', '61998765432', '1992-09-21', 'Rua C, 789', 3);
+('123.456.789-00', 'Ana Santos', '91234-5678', '1990-04-10', 'Rua A, 123', 3),
+('987.654.321-00', 'Carlos Pereira', '97654-3210', '1985-07-15', 'Rua B, 456', 3),
+('456.789.123-00', 'Mariana Costa', '99876-5432', '1992-09-21', 'Rua C, 789', 3);
 
 -- Inserindo relatórios
 INSERT INTO relatorio (descricao) VALUES
