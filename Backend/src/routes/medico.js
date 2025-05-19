@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   const { nome, especialidade, data_nascimento, crm, usuario_id_usuario } = req.body;
   try {
     const [result] = await db.query(
-      'INSERT INTO medico (nome, especialidade, data_nascimento, crm, usuario_id_usuario) VALUES (?, ?, ?, ?, ?)',
+      'INSERT INTO medico (nome, especialidade, data_nascimento, crm) VALUES (?, ?, ?, ?)',
       [nome, especialidade, data_nascimento, crm, usuario_id_usuario]
     );
     res.status(201).json({ id_medico: result.insertId });
@@ -32,8 +32,8 @@ router.put('/:id', async (req, res) => {
   const { nome, especialidade, data_nascimento, crm, usuario_id_usuario } = req.body;
   try {
     await db.query(
-      'UPDATE medico SET nome = ?, especialidade = ?, data_nascimento = ?, crm = ?, usuario_id_usuario = ? WHERE id_medico = ?',
-      [nome, especialidade, data_nascimento, crm, usuario_id_usuario, id]
+      'UPDATE medico SET nome = ?, especialidade = ?, data_nascimento = ?, crm = ? WHERE id_medico = ?',
+      [nome, especialidade, data_nascimento, crm, id]
     );
     res.json({ mensagem: 'Médico atualizado com sucesso!' });
   } catch (err) {
