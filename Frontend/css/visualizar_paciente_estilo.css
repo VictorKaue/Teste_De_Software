@@ -161,100 +161,44 @@ body, html {
   }
 }
 
-.form-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #003844;
-  margin-bottom: 32px;
-  font-family: 'Montserrat', sans-serif;
+.form-title{
+    font-size: 25px;
+    color: #006075;
 }
 
-.patient-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 16px;
-  color: #003844;
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-family: 'Inter', sans-serif;
-}
-
-.form-group input {
-  padding: 12px 16px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #D9D9D9;
-  background: white;
-  color: #333;
-  font-family: 'Inter', sans-serif;
-}
-
-.form-group input::placeholder {
-  color: #B3B3B3;
-}
-
-.btn-cadastrar {
+.table-container {
   width: 100%;
-  padding: 12px;
-  background: #2C2C2C; /* cor do fundo */
-  color: #F5F5F5; /* cor do texto */
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-  border-radius: 8px;
-  border: 1px solid #2C2C2C;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  transition: background-color 0.3s ease;
+  overflow-x: auto;
   margin-top: 20px;
 }
 
-.btn-cadastrar:hover {
-  background: #444444; /* efeito hover */
-  border-color: #444444;
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Adaptação para telas menores */
+.patient-table thead {
+  background-color: #f5f5f5;
+}
+
+.patient-table th, .patient-table td {
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+}
+
+.patient-table th {
+  font-weight: 600;
+  color: #003844;
+}
+
 @media (max-width: 768px) {
-  .patient-form {
-    gap: 16px;
-  }
-
-  .form-title {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .form-group label {
-    font-size: 14px;
-  }
-
-  .form-group input {
-    font-size: 14px;
-    padding: 10px 14px;
-  }
-
-  .btn-cadastrar {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .content-card {
-    width: 95%;
-    height: auto;
-    margin-top: 40px;
+  .patient-table th, .patient-table td {
+    font-size: 12px;
+    padding: 8px 10px;
   }
 }
+
