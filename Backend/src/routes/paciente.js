@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 
 // Listar todos os pacientes
-router.get('/', async (resq, res) => {
+router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM paciente');
         res.json(rows);

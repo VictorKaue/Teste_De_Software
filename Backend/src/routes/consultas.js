@@ -1,5 +1,5 @@
-const require = require('express');
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router(); 
 const db = require('../config/db');
 
 // Listar todas as consultas

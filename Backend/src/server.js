@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
-const medicosRouter = require('./routes/medicos');
 const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
-app.use('/medicos', medicosRouter);
-app.use('/pacientes', require('./routes/paciente'));
+app.use('/medicos', require('./routes/medicos'));
+app.use('/pacientes', require('./routes/pacientes'));
+app.use('/consultas', require('./routes/consultas'));
+app.use(express.static('Frontend/'));
 
 
 const PORT = 3000;
