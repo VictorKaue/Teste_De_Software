@@ -1,0 +1,109 @@
+.content-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.consulta-form {
+  margin-bottom: 40px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.tabela-consultas {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #0098B9;
+  color: white;
+}
+
+.btn-editar {
+  background: #f1c40f;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn.agendar {
+  background: #27ae60;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .content-card {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  .btn-editar, .btn-cancelar {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
