@@ -3,32 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/styles.css">
+    <title>Sismed - Login Médico</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Sismed</h1>
             <nav class="menu">
-                <a href="cadastroMedico.html" class="menu-item active">Médico</a>
-                <a href="cadastroPaciente.html" class="menu-item">Paciente</a>
-                <a href="#" class="menu-item">Consulta</a>
+                <a href="loginMedico.html" class="menu-item active">Médico</a>
+                <a href="loginPaciente.html" class="menu-item">Paciente</a>
+                <a href="consulta.html" class="menu-item">Consulta</a>
             </nav>
         </div>
 
-        <form class="cadastro-container" id="formMedico">
+        <form class="cadastro-container" id="formLoginMedico">
             <div class="form-box">
-                <h2>Cadastro Médico</h2>
+                <h2>Login Médico</h2>
                 
                 <div class="form-group">
-                    <input type="text" placeholder="Nome Completo" required>
-                </div>
-
-                <div class="form-group">
                     <input type="text" placeholder="CRM" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" placeholder="Especialidade" required>
                 </div>
 
                 <div class="form-group">
@@ -37,8 +30,12 @@
 
                 <div class="button-container">
                     <button type="reset" class="btn limpar">Limpar</button>
-                    <button type="button" class="btn cadastrar">Cadastrar</button>
+                    <button type="submit" class="btn cadastrar">Entrar</button>
                 </div>
+
+                <p style="text-align: center; margin-top: 15px;">
+                    Não tem conta? <a href="cadastro_paciente.html" style="color: #27ae60;">Cadastre-se</a>
+                </p>
             </div>
         </form>
     </div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Sismed - Login Paciente</title>
+</head>
+<body class="paciente-page">
+    <div class="container">
+        <div class="header">
+            <h1>Sismed</h1>
+            <nav class="menu">
+                <a href="loginMedico.html" class="menu-item">Médico</a>
+                <a href="loginPaciente.html" class="menu-item active">Paciente</a>
+                <a href="consulta.html" class="menu-item">Consulta</a>
+            </nav>
+        </div>
+
+        <form class="cadastro-container" id="formLoginPaciente">
+            <div class="form-box">
+                <h2>Login Paciente</h2>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="CPF" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" required>
+                </div>
+
+                <div class="button-container">
+                    <button type="reset" class="btn limpar">Limpar</button>
+                    <button type="submit" class="btn cadastrar">Entrar</button>
+                </div>
+
+                <p style="text-align: center; margin-top: 15px;">
+                    Não tem conta? <a href="cadastro_paciente.html" style="color: #27ae60;">Cadastre-se</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
