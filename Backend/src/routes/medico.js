@@ -14,11 +14,11 @@ router.get('/', async (req, res) => {
 
 // Cadastrar médico
 router.post('/', async (req, res) => {
-  const { nome, especialidade, data_nascimento, crm, usuario_id_usuario } = req.body;
+  const { nome, especialidade, data_nascimento, crm, usuario_id_usuario, senha } = req.body;
   try {
     const [result] = await db.query(
-      'INSERT INTO medico (nome, especialidade, data_nascimento, crm) VALUES (?, ?, ?, ?)',
-      [nome, especialidade, data_nascimento, crm, usuario_id_usuario]
+      'INSERT INTO medico (nome, especialidade, data_nascimento, crm, senha) VALUES (?, ?, ?, ?, ?)',
+      [nome, especialidade, data_nascimento, crm, usuario_id_usuario, senha]
     );
     res.status(201).json({ id_medico: result.insertId });
   } catch (err) {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 // Atualizar médico
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { nome, especialidade, data_nascimento, crm, usuario_id_usuario } = req.body;
+  const { nome, especialidade, data_nascimento, crm} = req.body;
   try {
     await db.query(
       'UPDATE medico SET nome = ?, especialidade = ?, data_nascimento = ?, crm = ? WHERE id_medico = ?',
