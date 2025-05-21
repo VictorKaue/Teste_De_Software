@@ -29,7 +29,7 @@
     <!-- Conteúdo principal -->
     <main class="main-content">
       <div class="content-card">
-        <h1 class="form-title">Médicos Cadastrados - <span id="total-medicos" style="color: #006075;">0</span></h1>
+        <h1 class="form-title">Médicos<span id="total-medicos" style="color: #006075;"></span></h1>
         
         <div class="table-container">
           <table class="medico-table">
@@ -64,14 +64,8 @@
           </table>
         </div>
       </div>
-
-      <script>
-        window.addEventListener('DOMContentLoaded', () => {
-          const tbody = document.querySelector('.medico-table tbody');
-          const totalMedicos = tbody.querySelectorAll('tr').length;
-          document.getElementById('total-medicos').textContent = totalMedicos;
-        });
-      </script>
+      
+    
     </main>
   </div>
 </body>

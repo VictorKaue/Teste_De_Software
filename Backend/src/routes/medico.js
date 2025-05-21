@@ -14,11 +14,11 @@ router.get('/', async (req, res) => {
 
 // Cadastrar médico
 router.post('/', async (req, res) => {
-  const { nome, especialidade, data_nascimento, crm, usuario_id_usuario, senha } = req.body;
+  const { nome, especialidade, data_nascimento, crm, senha } = req.body;
   try {
     const [result] = await db.query(
       'INSERT INTO medico (nome, especialidade, data_nascimento, crm, senha) VALUES (?, ?, ?, ?, ?)',
-      [nome, especialidade, data_nascimento, crm, usuario_id_usuario, senha]
+      [nome, especialidade, data_nascimento, crm, senha]
     );
     res.status(201).json({ id_medico: result.insertId });
   } catch (err) {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 // Atualizar médico
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { nome, especialidade, data_nascimento, crm} = req.body;
+  const { nome, especialidade, data_nascimento, crm } = req.body;
   try {
     await db.query(
       'UPDATE medico SET nome = ?, especialidade = ?, data_nascimento = ?, crm = ? WHERE id_medico = ?',
@@ -49,6 +49,26 @@ router.delete('/:id', async (req, res) => {
     res.json({ mensagem: 'Médico removido com sucesso!' });
   } catch (err) {
     res.status(500).json({ erro: err.message });
+  }
+});
+
+// Rota para login do médico
+router.post('/login', async (req, res) => {
+  const { crm, senha } = req.body;
+
+  try {
+    const [rows] = await db.query(
+      'SELECT * FROM medico WHERE crm = ? AND senha = ?',
+      [crm, senha]
+    );
+
+    if (rows.length > 0) {
+      res.status(200).json({ mensagem: 'Login bem-sucedido', medico: rows[0] });
+    } else {
+      res.status(401).json({ mensagem: 'CRM ou senha incorretos' });
+    }
+  } catch (error) {
+    res.status(500).json({ mensagem: 'Erro no servidor', erro: error.message });
   }
 });
 

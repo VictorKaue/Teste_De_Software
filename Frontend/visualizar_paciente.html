@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SISMED - Cadastro de Pacientes</title>
-  <link rel="stylesheet" href="./css/visualizar_paciente_estilo.css" />
+  <link rel="stylesheet" href="./css/visualizar_medico_estilo.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 
@@ -35,10 +35,10 @@
     <!-- Conteúdo principal -->
     <main class="main-content">
       <div class="content-card">
-        <h1 class="form-title">Número de Pacientes - <span id="total-pacientes" style="color: #006075;">0</span></h1>
+        <h1 class="form-title">Pacientes <span id="total-pacientes" style="color: #006075;"></span></h1>
 
         <div class="table-container">
-          <table class="patient-table">
+          <table class="medico-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -92,17 +92,6 @@
           </table>
         </div>
       </div>
-
-      <script>
-        window.addEventListener('DOMContentLoaded', () => {
-          const tbody = document.querySelector('.patient-table tbody');
-          const totalPacientes = tbody.querySelectorAll('tr').length;
-          document.getElementById('total-pacientes').textContent = totalPacientes;
-        });
-      </script>
-
-
-
   </div>
 
   </main>

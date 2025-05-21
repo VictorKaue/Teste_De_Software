@@ -53,4 +53,23 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    const { cpf, senha } = req.body;
+  
+    try {
+      const [rows] = await db.query(
+        'SELECT * FROM paciente WHERE cpf = ? AND senha = ?',
+        [cpf, senha]
+      );
+  
+      if (rows.length > 0) {
+        res.status(200).json({ mensagem: 'Login bem-sucedido', paciente: rows[0] });
+      } else {
+        res.status(401).json({ mensagem: 'CPF ou senha incorretos' });
+      }
+    } catch (error) {
+      res.status(500).json({ mensagem: 'Erro no servidor', erro: error.message });
+    }
+  });
+
 module.exports = router;

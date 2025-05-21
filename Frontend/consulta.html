@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SISMED - Agendamento de Consultas</title>
+  <title>SISMED - Consultas</title>
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/consulta_estilo.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -21,15 +21,13 @@
 
     <div class="content-card">
       <h2>Agendar Nova Consulta</h2>
-      
       <form class="consulta-form">
         <div class="form-row">
           <div class="form-group">
             <label for="paciente">Paciente</label>
             <select id="paciente" required>
               <option value="">Selecione um paciente</option>
-              <option>João da Silva</option>
-              <option>Maria Oliveira</option>
+              <!-- Pacientes serão carregados dinamicamente -->
             </select>
           </div>
 
@@ -37,57 +35,58 @@
             <label for="medico">Médico</label>
             <select id="medico" required>
               <option value="">Selecione um médico</option>
-              <option>Dr. Carlos Andrade</option>
-              <option>Dra. Ana Beatriz</option>
+              <!-- Médicos serão carregados dinamicamente -->
             </select>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="data">Data e Hora</label>
-            <input type="datetime-local" id="data" required>
+            <label for="data_hora">Data e Hora</label>
+            <input type="datetime-local" id="data_hora" required>
           </div>
 
           <div class="form-group">
-            <label for="especialidade">Especialidade</label>
-            <select id="especialidade" required>
-              <option value="">Selecione a especialidade</option>
-              <option>Cardiologia</option>
-              <option>Dermatologia</option>
-              <option>Ortopedia</option>
-            </select>
+            <label for="motivo">Motivo</label>
+            <input type="text" id="motivo" placeholder="Dor de cabeça" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="observacoes">Observações</label>
-          <textarea id="observacoes" rows="3"></textarea>
+          <textarea id="observacoes" rows="3" placeholder="Ex: Consulta de rotina"></textarea>
         </div>
 
         <div class="button-container">
           <button type="submit" class="btn agendar">Agendar Consulta</button>
+          <button type="button" class="btn voltar" onclick="window.location.href='loginPaciente.html'">Voltar para Login</button>
         </div>
       </form>
 
+      <!-- Parte de consultas agendadas comentada -->
+      <!--
       <h2>Consultas Agendadas</h2>
       <div class="tabela-consultas">
         <table>
           <thead>
             <tr>
+              <th>ID</th>
               <th>Paciente</th>
               <th>Médico</th>
               <th>Data/Hora</th>
-              <th>Especialidade</th>
+              <th>Sala</th>
+              <th>Observações</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>1</td>
               <td>João da Silva</td>
               <td>Dr. Carlos Andrade</td>
               <td>25/03/2024 14:30</td>
-              <td>Cardiologia</td>
+              <td>101</td>
+              <td>Consulta de rotina</td>
               <td>
                 <button class="btn-editar">Editar</button>
                 <button class="btn-cancelar">Cancelar</button>
@@ -96,7 +95,9 @@
           </tbody>
         </table>
       </div>
+      -->
     </div>
   </div>
+  <script src="./js/consulta.js"></script>
 </body>
 </html>

@@ -14,11 +14,11 @@ router.get('/', async (req, res) => {
 
 // Cadastrar consulta
 router.post('/', async (req, res) => {
-    const { data_hora, paciente_id_paciente, medico_id_medico } = req.body;
+    const { data_hora, motivo, descricao, paciente_id_paciente, medico_id_medico } = req.body;
     try {
         const [result] = await db.query(
-            'INSERT INTO consulta (data_hora, paciente_id_paciente, medico_id_medico) VALUES (?, ?, ?)',
-            [data_hora, paciente_id_paciente, medico_id_medico]
+            'INSERT INTO consulta (data_horario, motivo, descricao, paciente_id, medico_id) VALUES (?, ?, ?, ?, ?)'
+            [data_hora, motivo, descricao, paciente_id_paciente, medico_id_medico]
         );
         res.status(201).json({ id_consulta: result.insertId });
     } catch (err) {

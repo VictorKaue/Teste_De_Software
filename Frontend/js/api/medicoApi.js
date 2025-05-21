@@ -1,43 +1,43 @@
-import axios from 'axios';
+document.getElementById('btnCadastrarMedico').addEventListener('click', async () => {
+  // Captura os valores do formulário
+  const nome = document.getElementById('nome').value;
+  const crm = document.getElementById('crm').value;
+  const especialidade = document.getElementById('especialidade').value;
+  const nascimento = document.getElementById('nascimento').value;
+  const senha = document.getElementById('senha').value;
 
-const API_URL = 'http://localhost:3000/medicos';
-
-export const getMedicos = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao buscar médicos:', error);
-    throw error;
+  // Validação básica
+  if (!nome || !crm || !especialidade || !nascimento || !senha) {
+    alert('Por favor, preencha todos os campos!');
+    return;
   }
-};
 
-export const createMedico = async (medico) => {
   try {
-    const response = await axios.post(API_URL, medico);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao criar médico:', error);
-    throw error;
-  }
-};
+    // Faz a requisição para a API
+    const response = await fetch('http://localhost:3000/medico/cadastrar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nome,
+        crm,
+        especialidade,
+        nascimento,
+        senha,
+      }),
+    });
 
-export const updateMedico = async (id, medico) => {
-  try {
-    const response = await axios.put(`${API_URL}/${id}`, medico);
-    return response.data;
+    if (response.ok) {
+      const data = await response.json();
+      alert('Médico cadastrado com sucesso!');
+      console.log('Resposta da API:', data);
+    } else {
+      const errorData = await response.json();
+      alert(`Erro ao cadastrar médico: ${errorData.mensagem}`);
+    }
   } catch (error) {
-    console.error('Erro ao atualizar médico:', error);
-    throw error;
+    console.error('Erro ao chamar a API:', error);
+    alert('Erro ao cadastrar médico. Tente novamente mais tarde.');
   }
-};
-
-export const deleteMedico = async (id) => {
-  try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao deletar médico:', error);
-    throw error;
-  }
-};
+});
