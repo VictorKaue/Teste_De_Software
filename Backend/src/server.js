@@ -4,9 +4,9 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
-app.use('/medicos', require('./routes/medicos'));
-app.use('/pacientes', require('./routes/pacientes'));
-app.use('/consultas', require('./routes/consultas'));
+app.use('/medicos', require('./routes/medico'));
+app.use('/paciente', require('./routes/paciente'));
+app.use('/consulta', require('./routes/consulta'));
 app.use(express.static('Frontend/'));
 
 
